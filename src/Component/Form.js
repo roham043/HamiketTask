@@ -21,7 +21,7 @@ const Form = () => {
     const dispatch = useDispatch()
     const schema = yup.object().shape({
         fullname: yup.string().required('این فیلد نباید خالی باشد'),
-        age: yup.number().positive().integer().min(18, 'شما اجازه دسترسی به سایت را ندارید').required(),
+        age: yup.number().positive().integer().min(18, 'باید بالاتر از 18 سال باشید').required(),
 
 
     })
