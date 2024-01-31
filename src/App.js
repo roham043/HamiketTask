@@ -1,23 +1,59 @@
 import Form from './Component/Form';
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+// Modal.setAppElement('#yourAppElement');
 
 function App() {
-  const [open, setOpen] = useState(false);
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   return (
-    <div className="App">
-
-      <button onClick={onOpenModal}>Open modal</button>
-      <Modal open={open} onClose={onCloseModal} center>
-        <Form />
-      </Modal>
-
-    </div>
+    <div>
+    <button onClick={openModal}>Open Modal</button>
+    <Modal
+      isOpen={modalIsOpen}
+      onAfterOpen={afterOpenModal}
+      onRequestClose={closeModal}
+      style={customStyles}
+      contentLabel="Example Modal"
+    >
+      <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+      <button onClick={closeModal}>close</button>
+      <Form/>
+      <form>
+        <input />
+        <button>tab navigation</button>
+        <button>stays</button>
+        <button>inside</button>
+        <button>the modal</button>
+      </form>
+    </Modal>
+  </div>
   );
 }
 
