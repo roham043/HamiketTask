@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
-
+import { FaUserEdit } from "react-icons/fa";
+import { RiDeleteBinFill } from "react-icons/ri";
 
 const Table = () => {
   const fullname = useSelector((state) => state.data.fullname);
@@ -9,41 +10,41 @@ const Table = () => {
   const birthday = useSelector((state) => state.data.birthday);
   // const image = useSelector((state)=> state.data.image);
   return (
-    <table className='table-auto  p-5 bg-white w-1/2 rounded-3xl'>
+    <table className=' p-5 bg-white w-1/2 rounded-3xl justify-start'>
       <tr className=' p-5'>
-        <th className=' p-5'>نام و نام خانوادگی</th>
+        <th className=' p-5 justify-start'>نام و نام خانوادگی</th>
         <td className='border p-5'>{fullname}</td>
 
-        <td className='border p-5'>تغییرات</td>
-        <td className=' p-5'>حذف</td>
+        <td className='border p-5'>{<FaUserEdit style={{fontSize:'30px',color:'green'}} />}</td>
+        <td className=' p-5'>{<RiDeleteBinFill style={{fontSize:'25px',color:'red'}}/>}</td>
       </tr >
-      <tr className=' p-5'>
+      <tr className=' p-5 bg-slate-100'>
         <th className='border p-5'>جنسیت</th>
         <td className='border p-5'>{sex}</td>
 
-        <td className='border p-5'>تغییرات</td>
-        <td className='border p-5'>حذف</td>
+        <td className='border p-5'>{<FaUserEdit style={{fontSize:'30px',color:'green'}} />}</td>
+        <td className='border p-5'>{<RiDeleteBinFill style={{fontSize:'25px',color:'red'}}/>}</td>
       </tr>
       <tr className=' p-5'>
         <th className='border p-5'>سن</th>
         <td className='border p-5'>{age}</td>
 
-        <td className='border p-5'>تغییرات</td>
-        <td className='border p-5'>حذف</td>
+        <td className='border p-5'>{<FaUserEdit style={{fontSize:'30px',color:'green'}} />}</td>
+        <td className='border p-5'>{<RiDeleteBinFill style={{fontSize:'25px',color:'red'}}/>}</td>
       </tr>
-      <tr className=' p-5'>
+      <tr className=' p-5 bg-slate-100'>
         <th className='border p-5'>تاریخ تولد</th>
         <td className='border p-5'>{birthday}</td>
 
-        <td className='border p-5'>تغییرات</td>
-        <td className='border p-5'>حذف</td>
+        <td className='border p-5'>{<FaUserEdit style={{fontSize:'30px',color:'green'}} />}</td>
+        <td className='border p-5'>{<RiDeleteBinFill style={{fontSize:'25px',color:'red'}}/>}</td>
       </tr>
       <tr className=' p-5'>
         <th className=' p-5'>عکس پروفایل</th>
         <td className='border p-5'>{''}</td>
 
-        <td className='border p-5'>تغییرات</td>
-        <td className=' p-5'>حذف</td>
+        <td className='border p-5'>{<FaUserEdit style={{fontSize:'30px',color:'green'}} />}</td>
+        <td className=' p-5'>{<RiDeleteBinFill style={{fontSize:'25px',color:'red'}}/>}</td>
       </tr>
     </table>
   )
