@@ -1,8 +1,8 @@
+import * as React from 'react';
 import Form from './Component/Form';
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import Table from './Component/Table';
+import Button from '@mui/material/Button';
 
 const customStyles = {
   content: {
@@ -34,8 +34,8 @@ function App(props) {
     setIsOpen(false);
   }
   return (
-    <div>
-    <button onClick={openModal}>Open Modal</button>
+    <div className='flex flex-col justify-around items-center bg-slate-100 w-full h-screen'>
+    <Button variant="contained" onClick={openModal} style={{fontFamily:'iranyekan'}}>ثبت نام</Button>
     <Modal
       isOpen={modalIsOpen}
       onAfterOpen={afterOpenModal}
