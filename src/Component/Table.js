@@ -86,7 +86,7 @@ const Table = () => {
       <tr className=' p-5'>
         <th className=' p-5'>عکس پروفایل</th>
         <td className='border p-5'>
-          {<img src={image.path} alt='عکس' width={60} height={60}/>}
+          {<img src={image.path} alt='' width={60} height={60}/>}
           </td>
 
         <td className='border p-5'>
