@@ -8,11 +8,11 @@ import 'react-calendar-datetime-picker/dist/style.css';
 // import {yupResolver} from '@hookform/resolvers/yup'
 
 const Form = () => {
-    const fullname = useSelector((state)=> state.fullname);
-    const sex = useSelector((state)=> state.sex)
-    const birthday =useSelector((state) => state.birthday);
-    const age =useSelector((state) => state.age);
-    const image =useSelector((state) => state.image);
+    const fullname = useSelector((state)=> state.data.fullname);
+    const sex = useSelector((state)=> state.data.sex)
+    const birthday =useSelector((state) => state.data.birthday);
+    const age =useSelector((state) => state.data.age);
+    const image =useSelector((state) => state.data.image);
 
     const dispatch = useDispatch()
     // const schema = yup.object().shape({
@@ -71,7 +71,7 @@ const Form = () => {
                 <label htmlFor="img">عکس پروفایل:</label>
                 <input type="file" id="img" name="img" accept="image/*" placeholder='gggg'  {...register('image')} />
                 <br />
-                <input type='submit' />
+                <button type='submit' >ثبت نام</button>
 
         </form>
 

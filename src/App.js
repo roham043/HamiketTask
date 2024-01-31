@@ -2,6 +2,7 @@ import Form from './Component/Form';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import Table from './Component/Table';
 
 const customStyles = {
   content: {
@@ -16,7 +17,7 @@ const customStyles = {
 
 // Modal.setAppElement('#yourAppElement');
 
-function App() {
+function App(props) {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -44,7 +45,7 @@ function App() {
     >
       <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
       <button onClick={closeModal}>close</button>
-      <Form/>
+      <Form />
       <form>
         <input />
         <button>tab navigation</button>
@@ -53,6 +54,7 @@ function App() {
         <button>the modal</button>
       </form>
     </Modal>
+    <Table/>
   </div>
   );
 }

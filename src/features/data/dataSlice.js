@@ -5,7 +5,7 @@ const initialState = {
     sex:'',
     birthday:'',
     age:0,
-    image:FileList
+    image:''
 }
 
 export const dataSlice = createSlice({
