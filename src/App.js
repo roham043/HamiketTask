@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Form from './Component/Form';
 import Modal from 'react-modal';
-import Table from './Component/Table';
+import TableMaterialUI from './Component/Table';
 import Button from '@mui/material/Button';
 
 const customStyles = {
@@ -34,7 +34,7 @@ function App(props) {
     setIsOpen(false);
   }
   return (
-    <div className='flex flex-col justify-around items-center bg-slate-100 w-full h-screen'>
+    <div className='flex flex-col justify-around items-center bg-slate-300 w-full h-screen'>
     <Button variant="contained" onClick={openModal} style={{fontFamily:'iranyekan'}}>ثبت نام</Button>
     <Modal
       isOpen={modalIsOpen}
@@ -54,7 +54,7 @@ function App(props) {
         <button>the modal</button>
       </form>
     </Modal>
-    <Table/>
+    <TableMaterialUI/>
   </div>
   );
 }
