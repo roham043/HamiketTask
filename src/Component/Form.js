@@ -3,11 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeModal } from '../features/modal/modalSlice';
 import { changeName, changeSex, changebirthday, changeage, changeImage } from '../features/data/dataSlice';
 import { useForm } from 'react-hook-form';
-import { DtPicker } from 'react-calendar-datetime-picker'
-import 'react-calendar-datetime-picker/dist/style.css';
 import * as yup from 'yup';
-import {yupResolver} from '@hookform/resolvers/yup'
+import { yupResolver } from '@hookform/resolvers/yup';
+import Input from '@mui/material/Input';
+// import { DtPicker } from 'react-calendar-datetime-picker'
+// import 'react-calendar-datetime-picker/dist/style.css';
 
+
+const ariaLabel = { 'aria-label': 'description' };
 const Form = () => {
     const fullname = useSelector((state) => state.data.fullname);
     const sex = useSelector((state) => state.data.sex)
@@ -18,13 +21,13 @@ const Form = () => {
     const dispatch = useDispatch()
     const schema = yup.object().shape({
         fullname: yup.string().required('این فیلد نباید خالی باشد'),
-        age:yup.number().positive().integer().min(18,'شما اجازه دسترسی به سایت را ندارید').required(),
+        age: yup.number().positive().integer().min(18, 'شما اجازه دسترسی به سایت را ندارید').required(),
 
 
     })
 
-    const { register, handleSubmit ,formState:{errors} } = useForm({
-        resolver:yupResolver(schema),
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
         defaultValues: { fullname, sex, birthday, age, image }
     });
     // const { register, handleSubmit } = useForm({
@@ -49,12 +52,17 @@ const Form = () => {
     return (
 
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input
+            {/* <input
                 className='mb-3'
                 type="text"
                 placeholder=" نام و نام خانوادگی"
-                {...register('fullname')} />
+                {...register('fullname')} /> */}
+            <Input placeholder=" نام و نام خانوادگی"
+                {...register('fullname')}
+                sx={{ fontFamily: 'iranyekan' ,mb:3}}
+                inputProps={ariaLabel} />
             <p className='text-red-500'>{errors.fullname?.message}</p>
+            
             <p>جنسیت:</p>
             <input type="radio" id="male" name="male" value='مرد' {...register('sex')} />
             <label htmlFor="html">مرد</label><br />
