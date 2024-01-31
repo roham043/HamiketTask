@@ -27,7 +27,7 @@ function App(props) {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    subtitle.style.color = '#00ff00';
   }
 
   function closeModal() {
@@ -43,16 +43,16 @@ function App(props) {
       style={customStyles}
       contentLabel="Example Modal"
     >
-      <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-      <button onClick={closeModal}>close</button>
+      <h2 className=' pb-4' ref={(_subtitle) => (subtitle = _subtitle)}>سلام لطفا برای ثبت نام اطلاعات خود را تکمیل نمایید</h2>
+      <Button sx={{mb:2}} variant="contained" color="error" onClick={closeModal} 
+         style={{fontFamily:'iranyekan'}}
+      >بستن</Button>
       <Form />
-      <form>
+      {/* <form>
         <input />
-        <button>tab navigation</button>
-        <button>stays</button>
-        <button>inside</button>
-        <button>the modal</button>
-      </form>
+        <button>بازگشت</button>
+      
+      </form> */}
     </Modal>
     <TableMaterialUI/>
   </div>
