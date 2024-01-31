@@ -55,9 +55,9 @@ const Form = () => {
                 {...register('fullname')} />
             {/* <p>{errors.fullname?.message}</p> */}
             <p>جنسیت:</p>
-            <input type="radio" id="male" name="male" {...register('male')} />
+            <input type="radio" id="male" name="male" value='مرد' {...register('sex')} />
             <label htmlFor="html">مرد</label><br />
-            <input type="radio" id="femail" name="femail" {...register('femail')} />
+            <input type="radio" id="femail" name="femail" value='زن' {...register('sex')} />
             <label htmlFor="css">زن</label><br />
 
             {/* <DtPicker onChange={true} local='fa' yearListStyle='list' {...register('brtDayfa')} /> */}
@@ -69,7 +69,7 @@ const Form = () => {
                 id="birthday"
                 name="birthday"
                 local='fa'
-                {...register('brtDay')} />
+                {...register('birthday')} />
             <br />
             <label htmlFor="age">سن:</label>
             <input

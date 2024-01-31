@@ -4,7 +4,7 @@ const initialState = {
     fullname:'',
     sex:'',
     birthday:'',
-    age:0,
+    age:'',
     image:''
 }
 

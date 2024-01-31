@@ -10,9 +10,9 @@ const Table = () => {
   const sex = useSelector((state) => state.data.sex);
   const age = useSelector((state) => state.data.age);
   const birthday = useSelector((state) => state.data.birthday);
-
+  const image = useSelector((state)=> state.data.image);
   const dispatch = useDispatch()
-  // const image = useSelector((state)=> state.data.image);
+  
   return (
     <table className=' p-5 bg-white w-1/2 rounded-3xl justify-start'>
       <tr className=' p-5'>
@@ -85,7 +85,9 @@ const Table = () => {
       </tr>
       <tr className=' p-5'>
         <th className=' p-5'>عکس پروفایل</th>
-        <td className='border p-5'>{''}</td>
+        <td className='border p-5'>
+          {<img src={image.path} alt='عکس' width={60} height={60}/>}
+          </td>
 
         <td className='border p-5'>
           {<FaUserEdit
