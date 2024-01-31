@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Form from './Component/Form';
+import {useSelector,useDispatch} from 'react-redux';
+import {changeModal} from './features/modal/modalSlice';
 import Modal from 'react-modal';
 import TableMaterialUI from './Component/Table';
 import Button from '@mui/material/Button';
@@ -18,11 +20,13 @@ const customStyles = {
 // Modal.setAppElement('#yourAppElement');
 
 function App(props) {
+  const openModal1 = useSelector((state) => state.modal.setIsOpen);
+  const dispatch = useDispatch()
   let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  // const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
-    setIsOpen(true);
+    dispatch(changeModal());
   }
 
   function afterOpenModal() {
@@ -31,13 +35,13 @@ function App(props) {
   }
 
   function closeModal() {
-    setIsOpen(false);
+    dispatch(changeModal());
   }
   return (
     <div className='flex flex-col justify-around items-center bg-slate-300 w-full h-screen'>
     <Button variant="contained" onClick={openModal} style={{fontFamily:'iranyekan'}}>ثبت نام</Button>
     <Modal
-      isOpen={modalIsOpen}
+      isOpen={openModal1}
       onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       style={customStyles}

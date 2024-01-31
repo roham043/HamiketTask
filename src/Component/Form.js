@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {changeModal} from '../features/modal/modalSlice';
 import { changeName, changeSex, changebirthday, changeage, changeImage } from '../features/data/dataSlice';
 import { useForm } from 'react-hook-form';
 import { DtPicker } from 'react-calendar-datetime-picker'
@@ -40,6 +41,8 @@ const Form = () => {
         console.log(data.birthday)
         console.log(data.age)
         console.log(data.image)
+
+        dispatch(changeModal())
 
     }
     return (
