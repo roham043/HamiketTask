@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeModal } from '../features/modal/modalSlice';
 import { changeName, changeSex, changebirthday, changeage, changeImage } from '../features/data/dataSlice';
 import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
 import Input from '@mui/material/Input';
 // import { DtPicker } from 'react-calendar-datetime-picker'
 // import 'react-calendar-datetime-picker/dist/style.css';
+// import * as yup from 'yup';
+// import { yupResolver } from '@hookform/resolvers/yup';
 
 
 const ariaLabel = { 'aria-label': 'description' };
@@ -55,10 +55,10 @@ const Form = () => {
 
             <Input placeholder=" نام و نام خانوادگی"
                 {...register('fullname', { required: true })}
-                sx={{ fontFamily: 'iranyekan', mb: 3 }}
+                sx={{ fontFamily: 'iranyekan', mb: 3}}
                 inputProps={ariaLabel} />
             {errors.fullname &&
-                <p className='text-red-500'
+                <p className='text-red-500 text-sm'
                 >این فیلد نباید خالی باشد
                 </p>}
             {/* {-------------------------------------------------------------------------------------} */}
@@ -76,7 +76,7 @@ const Form = () => {
                 })} />
             <label htmlFor="css">زن</label><br />
             {errors.sex &&
-                <p className='text-red-500'>
+                <p className='text-red-500 text-sm'>
                     {errors.sex.message}
                 </p>
             }
@@ -96,7 +96,7 @@ const Form = () => {
                     }
                 })} />
             {errors.birthday &&
-                <p className='text-red-500'>
+                <p className='text-red-500 text-sm'>
                     {errors.birthday.message}
                 </p>
             }
@@ -114,7 +114,7 @@ const Form = () => {
                         max: { value: 35, message: "شما باید کمتر از 35 سال باشید" }
                     })} />
             {errors.age &&
-                <p className='text-red-500'
+                <p className='text-red-500 text-sm'
                 >{errors.age.message}
                 </p>}
             <br />
