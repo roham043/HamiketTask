@@ -19,20 +19,20 @@ const Form = () => {
     const image = useSelector((state) => state.data.image);
 
     const dispatch = useDispatch()
-    const schema = yup.object().shape({
-        fullname: yup.string().required('این فیلد نباید خالی باشد'),
-        age: yup.number().positive().integer().min(18, 'باید بالاتر از 18 سال باشید').required(),
+    // const schema = yup.object().shape({
+    //     fullname: yup.string().required('این فیلد نباید خالی باشد'),
+    //     age: yup.number().positive().integer().min(18, 'باید بالاتر از 18 سال باشید').required(),
 
 
-    })
+    // })
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(schema),
-        defaultValues: { fullname, sex, birthday, age, image }
-    });
-    // const { register, handleSubmit } = useForm({
+    // const { register, handleSubmit, formState: { errors } } = useForm({
+    //     resolver: yupResolver(schema),
     //     defaultValues: { fullname, sex, birthday, age, image }
     // });
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        defaultValues: { fullname, sex, birthday, age, image }
+    });
 
     const onSubmit = (data) => {
         dispatch(changeName(data.fullname))
@@ -58,11 +58,14 @@ const Form = () => {
                 placeholder=" نام و نام خانوادگی"
                 {...register('fullname')} /> */}
             <Input placeholder=" نام و نام خانوادگی"
-                {...register('fullname')}
-                sx={{ fontFamily: 'iranyekan' ,mb:3}}
+                {...register('fullname', { required: true })}
+                sx={{ fontFamily: 'iranyekan', mb: 3 }}
                 inputProps={ariaLabel} />
-            <p className='text-red-500'>{errors.fullname?.message}</p>
-            
+            {errors.fullname &&
+                <p className='text-red-500'
+                >این فیلد نباید خالی باشد
+                </p>}
+
             <p>جنسیت:</p>
             <input type="radio" id="male" name="male" value='مرد' {...register('sex')} />
             <label htmlFor="html">مرد</label><br />
@@ -71,6 +74,7 @@ const Form = () => {
 
             {/* <DtPicker onChange={true} local='fa' yearListStyle='list' {...register('brtDayfa')} /> */}
             <br />
+            {/* {------------------------------------------------------------------} */}
             <label htmlFor="birthday">تاریخ تولد:</label>
             <input
                 className='mb-3'
@@ -83,19 +87,23 @@ const Form = () => {
                 {...register('birthday')}
             /> */}
             <br />
+            {/* {------------------------------------------------------------------} */}
             <label htmlFor="age">سن:</label>
             <input
                 className='mb-3'
                 type='number'
-                {...register('age')} />
-            <p className='text-red-500'>{errors.age?.message}</p>
-            {/* <select name="age" id="age" {...register('age')}>
-                    <option value="0-18" >0-18</option>
-                    <option value="19-30" >19-30</option>
-                    <option value="31-45" >31-45</option>
-                    <option value="46" >46</option>
-                </select> */}
+                {...register('age',
+                    {
+                        required: { value: 1, message: "این فیلد نباید خالی باشد" },
+                        min: { value: 18, message: "شما باید بزرگتر از 18 سال باشید" },
+                        max:{value:35 , message:"شما باید کمتر از 35 سال باشید"}
+                    })} />
+            {errors.age &&
+                <p className='text-red-500'
+                >{errors.age.message}
+                </p>}
             <br />
+            {/* {------------------------------------------------------------------} */}
             <label htmlFor="img">عکس پروفایل:</label>
             <input
                 className='mb-3'
