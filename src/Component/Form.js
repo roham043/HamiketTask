@@ -52,11 +52,7 @@ const Form = () => {
     return (
 
         <form onSubmit={handleSubmit(onSubmit)}>
-            {/* <input
-                className='mb-3'
-                type="text"
-                placeholder=" نام و نام خانوادگی"
-                {...register('fullname')} /> */}
+
             <Input placeholder=" نام و نام خانوادگی"
                 {...register('fullname', { required: true })}
                 sx={{ fontFamily: 'iranyekan', mb: 3 }}
@@ -65,14 +61,25 @@ const Form = () => {
                 <p className='text-red-500'
                 >این فیلد نباید خالی باشد
                 </p>}
-
+            {/* {-------------------------------------------------------------------------------------} */}
             <p>جنسیت:</p>
-            <input type="radio" id="male" name="male" value='مرد' {...register('sex')} />
+            <input type="radio" id="male" name="male" value='مرد'
+                {...register('sex')} />
             <label htmlFor="html">مرد</label><br />
-            <input type="radio" id="femail" name="femail" value='زن' {...register('sex')} />
-            <label htmlFor="css">زن</label><br />
 
-            {/* <DtPicker onChange={true} local='fa' yearListStyle='list' {...register('brtDayfa')} /> */}
+            <input type="radio" id="femail" name="femail" value='زن'
+                {...register('sex', {
+                    required: {
+                        value: 1,
+                        message: "این فیلد نباید خالی باشد"
+                    }
+                })} />
+            <label htmlFor="css">زن</label><br />
+            {errors.sex &&
+                <p className='text-red-500'>
+                    {errors.sex.message}
+                </p>
+            }
             <br />
             {/* {------------------------------------------------------------------} */}
             <label htmlFor="birthday">تاریخ تولد:</label>
@@ -82,10 +89,18 @@ const Form = () => {
                 id="birthday"
                 name="birthday"
                 local='fa'
-                {...register('birthday')} />
-            {/* <DtPicker local='fa'
-                {...register('birthday')}
-            /> */}
+                {...register('birthday', {
+                    required: {
+                        value: 1,
+                        message: 'این فیلد نباید خالی باشد'
+                    }
+                })} />
+            {errors.birthday &&
+                <p className='text-red-500'>
+                    {errors.birthday.message}
+                </p>
+            }
+
             <br />
             {/* {------------------------------------------------------------------} */}
             <label htmlFor="age">سن:</label>
@@ -96,7 +111,7 @@ const Form = () => {
                     {
                         required: { value: 1, message: "این فیلد نباید خالی باشد" },
                         min: { value: 18, message: "شما باید بزرگتر از 18 سال باشید" },
-                        max:{value:35 , message:"شما باید کمتر از 35 سال باشید"}
+                        max: { value: 35, message: "شما باید کمتر از 35 سال باشید" }
                     })} />
             {errors.age &&
                 <p className='text-red-500'
