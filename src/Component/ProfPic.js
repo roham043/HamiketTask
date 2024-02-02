@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ReactFileReader from 'react-file-reader';
 import {useSelector,useDispatch} from 'react-redux';
 import {changeSrcImage} from '../features/image/imageSlice';
@@ -16,11 +15,11 @@ export default function ProfilePic() {
     return (
         <div>
             <ReactFileReader fileTypes={[".png", ".jpg"]} base64={true} multipleFiles={true} handleFiles={handleFiles}>
-                <span className="border px-1 my-5 bg-slate-200 hover:cursor-pointer">انتخاب عکس</span>
+                <span className=" px-5  bg-green-400 text-white rounded-lg hover:cursor-pointer">انتخاب عکس</span>
             </ReactFileReader>
             <img
                 src={imageSrc}
-                className="w-10 h-10"
+                className="w-10 h-10 mt-5 mr-10"
                 alt="" />
         </div>
     );

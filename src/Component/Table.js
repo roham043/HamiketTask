@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { changeModal } from '../features/modal/modalSlice';
-import { changeName,changeImage,changeSex,changeage,changebirthday } from '../features/data/dataSlice';
+import { changeName,changeSex,changeage,changebirthday } from '../features/data/dataSlice';
 import {changeSrcImage} from '../features/image/imageSlice';
 import { FaUserEdit } from "react-icons/fa";
 import { RiDeleteBinFill } from "react-icons/ri";

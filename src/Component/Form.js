@@ -5,6 +5,7 @@ import { changeName, changeSex, changebirthday, changeage, changeImage } from '.
 import { useForm } from 'react-hook-form';
 import Input from '@mui/material/Input';
 import ProfilePic from './ProfPic';
+import Button from '@mui/material/Button';
 // import { DtPicker } from 'react-calendar-datetime-picker'
 // import 'react-calendar-datetime-picker/dist/style.css';
 // import * as yup from 'yup';
@@ -56,7 +57,7 @@ const Form = () => {
 
             <Input placeholder=" نام و نام خانوادگی"
                 {...register('fullname', { required: true })}
-                sx={{ fontFamily: 'iranyekan', mb: 3}}
+                sx={{ fontFamily: 'iranyekan', mb: 3 }}
                 inputProps={ariaLabel} />
             {errors.fullname &&
                 <p className='text-red-500 text-sm'
@@ -120,19 +121,13 @@ const Form = () => {
                 </p>}
             <br />
             {/* {------------------------------------------------------------------} */}
-            <label htmlFor="img">عکس پروفایل:</label>
-            {/* <input
-                className='mb-3'
-                type="file"
-                id="img"
-                name="img"
-                accept="image/*"
-                {...register('image')} /> */}
-                <ProfilePic
-                
-                />
+            <p className='mb-2'>لطفا عکس پروفایل خود را انتخاب کنید :</p>
+
+            <ProfilePic />
+
             <br />
-            <button type='submit' >ثبت نام</button>
+            {/* {------------------------------------------------------------------} */}
+            <Button variant="contained" style={{ fontFamily: 'iranyekan' }} type='submit' >ثبت نام</Button>
 
         </form>
 
