@@ -13,7 +13,7 @@ export default function ProfilePic() {
     }
 
     return (
-        <div>
+        <div className='mt-3'>
             <ReactFileReader fileTypes={[".png", ".jpg"]} base64={true} multipleFiles={true} handleFiles={handleFiles}>
                 <span className=" px-5  bg-green-400 text-white rounded-lg hover:cursor-pointer">انتخاب عکس</span>
             </ReactFileReader>

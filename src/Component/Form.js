@@ -42,12 +42,6 @@ const Form = () => {
         dispatch(changebirthday(data.birthday))
         dispatch(changeage(data.age))
         dispatch(changeImage(data.image))
-        console.log(data.fullname)
-        console.log(data.sex)
-        console.log(data.birthday)
-        console.log(data.age)
-        console.log(data.image)
-
         dispatch(changeModal())
 
     }
@@ -55,38 +49,45 @@ const Form = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
 
-            <Input placeholder=" نام و نام خانوادگی"
-                {...register('fullname', { required: true })}
-                sx={{ fontFamily: 'iranyekan', mb: 3 }}
-                inputProps={ariaLabel} />
-            {errors.fullname &&
-                <p className='text-red-500 text-sm'
-                >این فیلد نباید خالی باشد
-                </p>}
+            <div className='bg-slate-100 '>
+                <Input placeholder=" نام و نام خانوادگی"
+                    {...register('fullname', { required: true })}
+                    sx={{ fontFamily: 'iranyekan', width: '100%' }}
+                    inputProps={ariaLabel} />
+                {errors.fullname &&
+                    <p className='text-red-500 text-sm'
+                    >این فیلد نباید خالی باشد
+                    </p>}
+            </div>
             {/* {-------------------------------------------------------------------------------------} */}
-            <p>جنسیت:</p>
-            <input type="radio" id="male" name="male" value='مرد'
-                {...register('sex')} />
-            <label htmlFor="html">مرد</label><br />
+            <div className='bg-slate-100 '>
+                <p className='mt-3'>جنسیت:</p>
 
-            <input type="radio" id="femail" name="femail" value='زن'
-                {...register('sex', {
-                    required: {
-                        value: 1,
-                        message: "این فیلد نباید خالی باشد"
-                    }
-                })} />
-            <label htmlFor="css">زن</label><br />
-            {errors.sex &&
-                <p className='text-red-500 text-sm'>
-                    {errors.sex.message}
-                </p>
-            }
+                <input type="radio" id="male" name="male" value='مرد'
+                    {...register('sex')} />
+                <label htmlFor="html">مرد</label><br />
+
+
+                <input type="radio" id="femail" name="femail" value='زن'
+                    {...register('sex', {
+                        required: {
+                            value: 1,
+                            message: "این فیلد نباید خالی باشد"
+                        }
+                    })} />
+                <label htmlFor="css">زن</label><br />
+
+                {errors.sex &&
+                    <p className='text-red-500 text-sm'>
+                        {errors.sex.message}
+                    </p>
+                }
+            </div>
             <br />
             {/* {------------------------------------------------------------------} */}
             <label htmlFor="birthday">تاریخ تولد:</label>
             <input
-                className='mb-3'
+                className=''
                 type="date"
                 id="birthday"
                 name="birthday"
@@ -105,23 +106,27 @@ const Form = () => {
 
             <br />
             {/* {------------------------------------------------------------------} */}
-            <label htmlFor="age">سن:</label>
-            <input
-                className='mb-3'
-                type='number'
-                {...register('age',
-                    {
-                        required: { value: 1, message: "این فیلد نباید خالی باشد" },
-                        min: { value: 18, message: "شما باید بزرگتر از 18 سال باشید" },
-                        max: { value: 35, message: "شما باید کمتر از 35 سال باشید" }
-                    })} />
-            {errors.age &&
-                <p className='text-red-500 text-sm'
-                >{errors.age.message}
-                </p>}
+            <div className='bg-slate-100'>
+
+                <Input
+                    sx={{ fontFamily: 'iranyekan', width: '100%' }}
+                    placeholder='سن'
+                    className='mt-3'
+                    type='number'
+                    {...register('age',
+                        {
+                            required: { value: 1, message: "این فیلد نباید خالی باشد" },
+                            min: { value: 18, message: "شما باید بزرگتر از 18 سال باشید" },
+                            max: { value: 35, message: "شما باید کمتر از 35 سال باشید" }
+                        })} />
+                {errors.age &&
+                    <p className='text-red-500 text-sm'
+                    >{errors.age.message}
+                    </p>}
+            </div>
             <br />
             {/* {------------------------------------------------------------------} */}
-            <p className='mb-2'>لطفا عکس پروفایل خود را انتخاب کنید :</p>
+            <p className='mt-3'>لطفا عکس پروفایل خود را انتخاب کنید :</p>
 
             <ProfilePic />
 
