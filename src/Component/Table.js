@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { changeModal } from '../features/modal/modalSlice';
 import { changeName,changeImage,changeSex,changeage,changebirthday } from '../features/data/dataSlice';
-
+import {changeSrcImage} from '../features/image/imageSlice';
 import { FaUserEdit } from "react-icons/fa";
 import { RiDeleteBinFill } from "react-icons/ri";
 
@@ -10,7 +10,7 @@ const Table = () => {
   const sex = useSelector((state) => state.data.sex);
   const age = useSelector((state) => state.data.age);
   const birthday = useSelector((state) => state.data.birthday);
-  const image = useSelector((state)=> state.data.image);
+  const imageSrc = useSelector((state)=> state.image.imageSrc);
   const dispatch = useDispatch()
   
   return (
@@ -86,7 +86,7 @@ const Table = () => {
       <tr className=' p-5'>
         <th className=' p-5'>عکس پروفایل</th>
         <td className='border p-5'>
-          {<img src={image.path} alt='' width={60} height={60}/>}
+          {<img src={imageSrc} alt='' width={60} height={60}/>}
           </td>
 
         <td className='border p-5'>
@@ -98,7 +98,7 @@ const Table = () => {
         <td className=' p-5'>
           {<RiDeleteBinFill
             className='hover:cursor-pointer'
-            onClick={() => dispatch(changeImage(''))}
+            onClick={() => dispatch(changeSrcImage(''))}
             style={{ fontSize: '25px', color: 'red' }} />}
         </td>
       </tr>

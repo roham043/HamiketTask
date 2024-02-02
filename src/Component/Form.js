@@ -4,6 +4,7 @@ import { changeModal } from '../features/modal/modalSlice';
 import { changeName, changeSex, changebirthday, changeage, changeImage } from '../features/data/dataSlice';
 import { useForm } from 'react-hook-form';
 import Input from '@mui/material/Input';
+import ProfilePic from './ProfPic';
 // import { DtPicker } from 'react-calendar-datetime-picker'
 // import 'react-calendar-datetime-picker/dist/style.css';
 // import * as yup from 'yup';
@@ -120,13 +121,16 @@ const Form = () => {
             <br />
             {/* {------------------------------------------------------------------} */}
             <label htmlFor="img">عکس پروفایل:</label>
-            <input
+            {/* <input
                 className='mb-3'
                 type="file"
                 id="img"
                 name="img"
                 accept="image/*"
-                {...register('image')} />
+                {...register('image')} /> */}
+                <ProfilePic
+                
+                />
             <br />
             <button type='submit' >ثبت نام</button>
 
