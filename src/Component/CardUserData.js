@@ -1,7 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import {deleteUser} from '../features/users/usersSlice';
 
 const CardUserData = () => {
-    const usersData = useSelector((state) => state.users.usersList)
+    const usersData = useSelector((state) => state.users.usersList);
+    // const usersId = useSelector((state) => state.users.usersList._id);
+    const dispatch = useDispatch()
     return (
         <div className="flex">
             <div >
@@ -44,7 +47,7 @@ const CardUserData = () => {
                     <div
                         className="bg-slate-100 w-28 h-10 border-l-2 border-b-2 border-black "
                         key={name._id}>
-                        <button>ویرایش</button>
+                        <button >ویرایش</button>
                     </div>
                 ))}
             </div>
@@ -53,7 +56,7 @@ const CardUserData = () => {
                     <div
                         className="bg-slate-100 w-28 h-10  border-b-2 border-black "
                         key={name._id}>
-                        <button>حذف</button>
+                        <button onClick={() => dispatch(deleteUser(name._id))}>حذف</button>
                     </div>
                 ))}
             </div>
