@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeModal } from '../features/modal/modalSlice';
 import { changeName, changeSex, changebirthday, changeage, changeImage } from '../features/data/dataSlice';
+import {addUser} from '../features/users/usersSlice';
 import { useForm } from 'react-hook-form';
 import Input from '@mui/material/Input';
 import ProfilePic from './ProfPic';
@@ -20,7 +21,10 @@ const Form = () => {
     const age = useSelector((state) => state.data.age);
     const image = useSelector((state) => state.data.image);
 
+   
+
     const dispatch = useDispatch()
+    
     // const schema = yup.object().shape({
     //     fullname: yup.string().required('این فیلد نباید خالی باشد'),
     //     age: yup.number().positive().integer().min(18, 'باید بالاتر از 18 سال باشید').required(),
@@ -43,8 +47,23 @@ const Form = () => {
         dispatch(changeage(data.age))
         dispatch(changeImage(data.image))
         dispatch(changeModal())
-
+        dispatch(addUser(
+            {
+                _id:Math.random(),
+                data
+            }
+        ))
+        
+       
     }
+    const userData = {
+        fullnameUser: fullname,
+        sexUser:sex,
+        birthdayUser:birthday,
+        ageUser:age,
+        imageUser:image
+    }
+    
     return (
 
         <form onSubmit={handleSubmit(onSubmit)}>
