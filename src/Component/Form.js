@@ -53,16 +53,13 @@ const Form = () => {
                 data
             }
         ))
-        
-       
+        dispatch(changeName(''))
+        dispatch(changeSex(''))
+        dispatch(changebirthday(''))
+        dispatch(changeage(''))
+        dispatch(changeImage(''))
     }
-    const userData = {
-        fullnameUser: fullname,
-        sexUser:sex,
-        birthdayUser:birthday,
-        ageUser:age,
-        imageUser:image
-    }
+  
     
     return (
 
