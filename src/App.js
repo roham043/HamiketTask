@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import TableMaterialUI from './Component/Table';
 import Button from '@mui/material/Button';
 
+
 const customStyles = {
   content: {
     top: '50%',
@@ -58,6 +59,7 @@ function App(props) {
       
       </form> */}
     </Modal>
+    
     <TableMaterialUI/>
   </div>
   );

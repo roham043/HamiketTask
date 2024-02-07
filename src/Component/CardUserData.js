@@ -1,5 +1,6 @@
 import { useSelector,useDispatch } from 'react-redux';
 import {deleteUser} from '../features/users/usersSlice';
+import EditUserModal from './EditUserModal';
 
 const CardUserData = () => {
     const usersData = useSelector((state) => state.users.usersList);
@@ -47,7 +48,7 @@ const CardUserData = () => {
                     <div
                         className="bg-slate-100 w-28 h-10 border-l-2 border-b-2 border-black "
                         key={name._id}>
-                        <button >ویرایش</button>
+                        <EditUserModal id={name._id}/>
                     </div>
                 ))}
             </div>
