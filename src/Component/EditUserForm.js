@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editUser } from '../features/users/usersSlice';
+import { changeModal } from '../features/modal/EditFormModalSlice';
 import { useForm } from 'react-hook-form';
 import ProfilePic from './ProfPic';
 import Input from '@mui/material/Input';
@@ -40,11 +41,11 @@ const EditUserForm = (id) => {
     setAge(data.age);
     setImage(data.image);
 
-
     dispatch(editUser({
       data,
       id,
-    }))
+    }));
+    dispatch(changeModal())
   }
 
   return (
@@ -141,7 +142,10 @@ const EditUserForm = (id) => {
 
           <br />
           {/* {------------------------------------------------------------------} */}
-          <Button variant="contained" style={{ fontFamily: 'iranyekan' }} type='submit' >ویرایش</Button>
+          <Button
+            variant="contained"
+            style={{ fontFamily: 'iranyekan' }}
+            type='submit' >ویرایش</Button>
 
 
         </form>
