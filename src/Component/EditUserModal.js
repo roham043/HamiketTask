@@ -3,7 +3,7 @@ import EditUserForm from './EditUserForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeModal } from '../features/modal/EditFormModalSlice';
 import Modal from 'react-modal';
-
+import { FaUserEdit } from "react-icons/fa";
 import Button from '@mui/material/Button';
 
 
@@ -40,7 +40,10 @@ const EditUserModal = (id) => {
     }
     return (
         <div>
-            <button onClick={openModal}>ویرایش</button>
+            <FaUserEdit 
+            style={{ fontSize: '30px', color: 'green', paddingRight: '5px' }}
+            className='hover:cursor-pointer'
+            onClick={openModal}></FaUserEdit>
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -51,7 +54,7 @@ const EditUserModal = (id) => {
                 <h2 ref={(_subtitle) => (subtitle = _subtitle)}>لطفا اطلاعات خود را ویرایش کنید</h2>
                 <button onClick={closeModal}>بستن</button>
                 
-                <EditUserForm id={id}/>
+                <EditUserForm key={id} id={id}/>
                
             </Modal>
         </div>

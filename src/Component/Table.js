@@ -22,6 +22,10 @@ const Table = () => {
           </div>
           <div className='bg-slate-200 w-28 h-10 border-l-2 border-b-2 border-black'>
             <p className='p-2  '>عکس پروفایل</p>
+          </div><div className='bg-slate-200 w-28 h-10 border-l-2 border-b-2 border-black'>
+            <p className='p-2  '>ویرایش</p>
+          </div><div className='bg-slate-200 w-28 h-10  border-b-2 border-black'>
+            <p className='p-2  '>حذف</p>
           </div>
         </div>
         <CardUserData />

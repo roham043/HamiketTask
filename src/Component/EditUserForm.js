@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editUser } from '../features/users/usersSlice';
 import { changeModal } from '../features/modal/EditFormModalSlice';
@@ -17,14 +17,22 @@ const ariaLabel = { 'aria-label': 'description' };
 
 const EditUserForm = (id) => {
 
-  const [fullname, setFullname] = useState('');
-  const [sex, setSex] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [age, setAge] = useState('');
-  const [image, setImage] = useState('');
-
-
   const usersData = useSelector((state) => state.users.usersList);
+  // console.log(usersData)
+  let index = usersData.findIndex((user) => user._id === id.id.id)
+  console.log(index)
+
+
+  //'usersData[0].data.fullname'
+  //usersData[index].data.fullname
+  const [fullname, setFullname] = useState(usersData[index].data.fullname);
+  const [sex, setSex] = useState(usersData[index].data.sex);
+  const [birthday, setBirthday] = useState(usersData[index].data.birthday);
+  const [age, setAge] = useState(usersData[index].data.age);
+  const [image, setImage] = useState(usersData[index].data.image);
+
+
+
 
 
   const dispatch = useDispatch()
@@ -35,11 +43,7 @@ const EditUserForm = (id) => {
   })
 
   const onSubmit = (data) => {
-    setFullname(data.fullname);
-    setSex(data.sex);
-    setBirthday(data.birthday);
-    setAge(data.age);
-    setImage(data.image);
+    
 
     dispatch(editUser({
       data,
@@ -55,6 +59,7 @@ const EditUserForm = (id) => {
 
           <div className='bg-slate-100 '>
             <Input placeholder=" نام و نام خانوادگی"
+
               {...register('fullname', { required: true })}
               sx={{ fontFamily: 'iranyekan', width: '100%' }}
               inputProps={ariaLabel} />

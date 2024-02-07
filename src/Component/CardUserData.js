@@ -1,9 +1,11 @@
-import { useSelector,useDispatch } from 'react-redux';
-import {deleteUser} from '../features/users/usersSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteUser } from '../features/users/usersSlice';
 import EditUserModal from './EditUserModal';
+import { RiDeleteBinFill } from "react-icons/ri";
 
 const CardUserData = () => {
     const usersData = useSelector((state) => state.users.usersList);
+
     // const usersId = useSelector((state) => state.users.usersList._id);
     const dispatch = useDispatch()
     return (
@@ -48,7 +50,7 @@ const CardUserData = () => {
                     <div
                         className="bg-slate-100 w-28 h-10 border-l-2 border-b-2 border-black "
                         key={name._id}>
-                        <EditUserModal id={name._id}/>
+                        <EditUserModal key={name._id} id={name._id} />
                     </div>
                 ))}
             </div>
@@ -57,7 +59,10 @@ const CardUserData = () => {
                     <div
                         className="bg-slate-100 w-28 h-10  border-b-2 border-black "
                         key={name._id}>
-                        <button onClick={() => dispatch(deleteUser(name._id))}>حذف</button>
+                        <RiDeleteBinFill
+                            className='hover:cursor-pointer'
+                            style={{ fontSize: '30px', color: 'red', paddingRight: '5px' }}
+                            onClick={() => dispatch(deleteUser(name._id))}></RiDeleteBinFill>
                     </div>
                 ))}
             </div>
